@@ -11,8 +11,13 @@ var view = (function(){
     }
     doAjax('POST', 'https://url.sanic.ca/api/shorten/', {url: url}, true, function (err, data) {
       if (err) console.log(err);
-      console.log("hiii");
-      console.log(data);
+      if (!data) {
+        doAjax('POST', 'https://url.sanic.ca/api/shorten/', {url: url}, true, function (err, data) {
+          if (err) console.log(err);
+          document.getElementById('result').innerHTML = `
+          new url: https://url.sanic.ca/u/${data.short_url}`;
+        });
+      }
       document.getElementById('result').innerHTML = `
       new url: https://url.sanic.ca/u/${data.short_url}`;
     });
