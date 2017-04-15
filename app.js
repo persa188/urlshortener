@@ -37,7 +37,7 @@ var config = {
 };
 
 app.get('/', function(req, res, next) {
-  res.sendFile('index.html');
+  res.sendFile('/public/index.html');
 });
 
 app.post('/api/shorten/', function(req, res, next) {
