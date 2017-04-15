@@ -6,7 +6,9 @@ var view = (function(){
   document.getElementById('shortener').onsubmit = function(e) {
     e.preventDefault();
     var url = document.getElementById('long-url').value;
-    console.log(url);
+    if (!/^(f|ht)tps?:\/\//i.test(url)) {
+      url = "http://" + url;
+    }
     doAjax('POST', 'https://url.sanic.ca/api/shorten/', {url: url}, true, function (err, data) {
       if (err) console.log(err);
       console.log("hiii");
