@@ -46,7 +46,7 @@ app.post('/api/shorten/', function(req, res, next) {
     if (err) return res.status(500).end(stat._500);
     if (doc) res.send({"short_url": doc.short_url});
     else {
-      if (!/^(f|ht)tps?:\/\//i.test(url)) {
+      if (!/^(f|ht)tps?:\/\//i.test(req.body.url)) {
         req.body.url = "http://" + req.body.url;
       }
       var new_url = new URL ({
