@@ -13,7 +13,7 @@ var view = (function(){
   }
 
   var do_call = function(url) {
-    doAjax('POST', 'https://url.sanic.ca/api/shorten/', {url: url}, true, function (err, data) {
+    doAjax('POST', 'https://url.sanic.ca/api/shorten/', {url: url}, true, function (err, data, url) {
       if (err) console.log(err);
       if(data) {
         document.getElementById('result').innerHTML = `
