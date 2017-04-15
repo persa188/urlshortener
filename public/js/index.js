@@ -3,21 +3,22 @@ var view = (function(){
 
   var view = {};
 
-  document.getElementById('shortener').onsubmit = function f(e) {
+  document.getElementById('shortener').onsubmit = function (e) {
     e.preventDefault();
     var url = document.getElementById('long-url').value;
     if (!/^(f|ht)tps?:\/\//i.test(url)) {
       url = "http://" + url;
     }
+    do_call(url);
+  }
+
+  var do_call = function(url) {
     doAjax('POST', 'https://url.sanic.ca/api/shorten/', {url: url}, true, function (err, data) {
       if (err) console.log(err);
-      if (!data) data = {
-        document.getElementById('result').innerHTML = `generating...`;
-        f(e);
-      } else {
+      if(data) {
         document.getElementById('result').innerHTML = `
         new url: https://url.sanic.ca/u/${!data.short_url}`;
-      }
+      }  else (do_call(url))
     });
   }
 
