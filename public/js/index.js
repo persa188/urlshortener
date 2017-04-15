@@ -12,7 +12,7 @@ var view = (function(){
       console.log("hiii");
       console.log(data);
       document.getElementById('result').innerHTML = `
-      new url: https://url.sanic.ca/u/${JSON.parse(data).short_url}`;
+      new url: https://url.sanic.ca/u/${data.short_url}`;
     });
   }
 
