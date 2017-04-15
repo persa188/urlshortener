@@ -51,10 +51,16 @@ app.post('/api/shorten/', function(req, res, next) {
       });
       new_url.save(function (err, docs) {
         if (err) res.status(500).end(stat._500);
-        res.send(docs.short_url);
+        res.send(JSON.stringify(docs.short_url));
       });
     }
   })
+});
+
+app.use(function (req, res, next){
+    //for debugging only
+    console.log("HTTP request", req.method, req.url, req.body);
+    return next();
 });
 
 app.get('/u/:id', function(req, res, next) {
