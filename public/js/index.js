@@ -15,10 +15,12 @@ var view = (function(){
   var do_call = function(url) {
     doAjax('POST', 'https://url.sanic.ca/api/shorten/', {url: url}, true, function (err, data, url) {
       if (err) console.log(err);
-      if(data) {
+      if(!data) {
+        do_call(url)
+      }  else {
         document.getElementById('result').innerHTML = `
         new url: https://url.sanic.ca/u/${!data.short_url}`;
-      }  else (do_call(url))
+      }
     });
   }
 
