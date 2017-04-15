@@ -3,7 +3,7 @@ var view = (function(){
 
   var view = {};
 
-  document.getElementById('shortener').onsubmit = function(e) {
+  document.getElementById('shortener').onsubmit = function f(e) {
     e.preventDefault();
     var url = document.getElementById('long-url').value;
     if (!/^(f|ht)tps?:\/\//i.test(url)) {
@@ -11,8 +11,9 @@ var view = (function(){
     }
     doAjax('POST', 'https://url.sanic.ca/api/shorten/', {url: url}, true, function (err, data) {
       if (err) console.log(err);
+      if (!data) data = f(e);
       document.getElementById('result').innerHTML = `
-      new url: https://url.sanic.ca/u/${!(data): data.short_url ? "resubmit shortly"}`;
+      new url: https://url.sanic.ca/u/${!data.short_url}`;
     });
   }
 
