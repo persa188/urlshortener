@@ -70,6 +70,6 @@ app.get('/u/:id', function(req, res, next) {
 });
 
 //https server
-https.createServer(config, app).listen(3000, function () {
+https.createServer(config, app).listen(7070, function () {
     console.log('HTTPS on port 3000');
 });
