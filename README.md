@@ -1,7 +1,8 @@
 # urlshortner
 
 ## Front End
-The front-end code is now seperate and hosted at https://url.sanic.ca || src = https://github.com/persa188/url-shortener-frontend
+The front-end code is now seperate and hosted [here](https://url.sanic.ca) and git src [here](https://github.com/persa188/url-shortener-frontend)  
+
 the node app will still contain the public directory for now and will be removed after some more tests are done.
 
 ## API
