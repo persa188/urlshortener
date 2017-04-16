@@ -1,4 +1,5 @@
-# urlshortner
+# urlshortner [![Build Status](https://travis-ci.org/{persa188}/{urlshortener}.png?branch=master)](https://travis-ci.org/{persa188}/{urlshortener})
+
 
 ## Front End
 The front-end code is now separate and hosted [here](https://url.sanic.ca) and git src [here](https://github.com/persa188/url-shortener-frontend)  
