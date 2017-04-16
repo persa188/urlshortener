@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
   <div class="nav">
@@ -10,15 +11,21 @@
   <div class="container">
     <div class="header">
       <form id="shortener">
-        URL: <input id="long-url" type="text" name="long-url">
+        URL: <input id="long-url" type="text" name="long-url" required="true"
+         pattern=".+"
+         placeholder="enter url">
         <input type="submit" value="Submit">
       </form>
     </div>
     <!-- fill with js -->
     <div id="result" class="result"></div>
 
-    <!-- js -->
-    <script src="js/index.js"></script>
   </div>
+  <div class="footer"> &lt; insert generic footer content here &gt; |
+    <span onclick="window.alert('not impl, maybe redirect or use a modal');">
+      help</span>
+  </div>
+  <!-- js -->
+  <script src="js/index.js"></script>
 </body>
 </html>

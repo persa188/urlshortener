@@ -30,3 +30,10 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.footer {
+  align-self: flex-end;
+  width: 100%;
+  opacity: 0.5;
+  text-align: center;
+}
