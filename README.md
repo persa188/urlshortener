@@ -6,7 +6,7 @@ The front-end code is now seperate and hosted [here](https://url.sanic.ca) and g
 the node app will still contain the public directory for now and will be removed after some more tests are done.
 
 ## API
-The api will be hosted [here](https://api2.sanic.ca)
+The api will be hosted [here](https://api2.sanic.ca)  
 The docs are [here](/docs)
 
 ### TODO:
