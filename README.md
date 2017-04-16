@@ -7,10 +7,11 @@ the node app will still contain the public directory for now and will be removed
 
 ## API
 The api will be hosted [here](https://api2.sanic.ca)
+The docs are [here](/docs)
 
 ### TODO:
 - [ ] remove /public and update code accordingly  (already done on production server)
 - [ ] automate production server updates
 - [ ] move production server code from temporary screen to docker container
-- [ ] docs
+- [x] docs
 - [ ] update this list with more tasks as they become apparent (ongoing)
