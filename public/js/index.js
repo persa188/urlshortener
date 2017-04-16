@@ -2,6 +2,7 @@ var view = (function(){
   "use strict";
 
   var view = {};
+  var server = 'localhost:7070';
 
   document.getElementById('shortener').onsubmit = function(e) {
     e.preventDefault();
@@ -9,31 +10,36 @@ var view = (function(){
     if (!/^(f|ht)tps?:\/\//i.test(url)) {
       url = "http://" + url;
     }
-    doAjax('POST', 'https://url.sanic.ca/api/shorten/', {url: url}, true, function (err, data) {
-      if (err) console.log(err);
-      document.getElementById('result').innerHTML = `
-      new url: https://url.sanic.ca/u/${data.short_url}`;
-    });
-  }
-
-  /*from thiery's lab5 code*/
-  var doAjax = function (method, url, body, json, callback){
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function(e){
-        switch(this.readyState){
-             case (XMLHttpRequest.DONE):
-                if (this.status === 200) {
-                    if (json) return callback(null, JSON.parse(this.responseText));
-                    return callback(null, this.responseText);
-                }else{
-                    return callback(this.responseText, null);
-                }
-        }
+    // doAjax('POST', 'https://url.sanic.ca/api/shorten/', {url: url}, true, function (err, data) {
+    //   if (err) console.log(err);
+    //   document.getElementById('result').innerHTML = `
+    //   new url: https://url.sanic.ca/u/${data.short_url}`;
+    // });
+    var reqbody = {
+      url: url
     };
-    xhttp.open(method, url, true);
-    if (json) xhttp.setRequestHeader('Content-Type', 'application/json');
-    xhttp.send((body)? JSON.stringify(body) : null);
-  };
+    fetch('https://'+server+'/api/shorten/', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              url: url
+            })
+          })
+          .then((response) => response.json())
+          .then((responseJson) => {
+            //@TODO refresh using same cstext (current search text)
+            responseJson.short_url = responseJson.short_url.replace(/"/g,"");
+            document.getElementById('result').innerHTML = `
+            shortened url: https://${server}/${responseJson.short_url}`;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
+  }
 
   return view;
 }(window));

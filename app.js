@@ -41,20 +41,25 @@ app.get('/', function(req, res, next) {
 });
 
 app.post('/api/shorten/', function(req, res, next) {
+  //set header
+  res.setHeader('Content-Type', 'application/json');
   //check if long_url exists
+  if (!req.body.url) res.status(400).end(stat._400);
   URL.findOne({long_url: req.body.url}, {}, function(err, doc) {
     if (err) return res.status(500).end(stat._500);
-    if (doc) res.send({"short_url": doc.short_url});
+    if (doc) res.send({"short_url": JSON.stringify(doc.short_url)});
     else {
+      //add to db and return
       var new_url = new URL ({
         long_url: req.body.url
       });
       new_url.save(function (err, docs) {
         if (err) res.status(500).end(stat._500);
+        res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(docs.short_url));
       });
     }
-  })
+  });
 });
 
 app.use(function (req, res, next){
