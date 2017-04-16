@@ -1,4 +1,4 @@
-# urlshortner [![Build Status](https://travis-ci.org/{persa188}/{urlshortener}.png?branch=master)](https://travis-ci.org/{persa188}/{urlshortener})
+# urlshortner [![Build Status](https://travis-ci.org/persa188/urlshortener.png?branch=master)](https://travis-ci.org/persa188/urlshortener)
 
 
 ## Front End
