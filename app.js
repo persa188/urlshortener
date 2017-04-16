@@ -54,10 +54,8 @@ app.post('/api/shorten/', function(req, res, next) {
         long_url: req.body.url
       });
       new_url.save(function (err, docs) {
-        console.log(docs);
         if (err) res.status(500).end(stat._500);
-        res.setHeader('Content-Type', 'application/json');
-        return res.json(docs.short_url);
+        return res.json(docs);
       });
     }
   });
