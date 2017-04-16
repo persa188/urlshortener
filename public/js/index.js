@@ -33,7 +33,7 @@ var view = (function(){
             //@TODO refresh using same cstext (current search text)
             if (responseJson.short_url) responseJson.short_url = responseJson.short_url.replace(/"/g,"");
             document.getElementById('result').innerHTML = `
-            shortened url: https://${server}/${responseJson.short_url}`;
+            shortened url: https://${server}/u/${responseJson.short_url}`;
           })
           .catch((error) => {
             console.error(error);
