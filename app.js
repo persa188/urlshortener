@@ -55,7 +55,7 @@ app.post('/api/shorten/', function(req, res, next) {
       });
       new_url.save(function (err, docs) {
         if (err) res.status(500).end(stat._500);
-        return res.json(docs);
+        return res.send({"short_url": JSON.stringify(docs.short_url)});
       });
     }
   });
