@@ -41,4 +41,4 @@ var view = (function(){
   }
 
   return view;
-}(window));
+}());
