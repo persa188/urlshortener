@@ -31,7 +31,6 @@ var view = (function(){
           .then((response) => response.json())
           .then((responseJson) => {
             //@TODO refresh using same cstext (current search text)
-            responseJson.short_url = responseJson.short_url.replace(/"/g,"");
             document.getElementById('result').innerHTML = `
             shortened url: https://${server}/${responseJson.short_url}`;
           })
