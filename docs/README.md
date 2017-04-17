@@ -1,9 +1,14 @@
 # API Docs
 
-## Installation
+## Quick Installation
 - install Node.js on your system & cd to the app dir
 - `npm install`
 - `node app.js` or `nodemon app.js`
+- go to localhost:7070
+
+## Using a Custom Domain
+- point a domain to this server and it should work as normal
+	- e.x. nginx redirect from port 443 -> localhost:7070 (using proxy-pass to fwd all data)
 
 ## URL API
 ### Shorten A URL
