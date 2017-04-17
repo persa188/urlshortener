@@ -14,7 +14,8 @@
 - this should work normally as long as the server variable in front-end is set to the location of your server.
 
 ## CORS Requests
-- by defauly CORs is allowed by the node server (for dev. reasons) , we suggest you disable it and allow only domains you trust (edit this block [lines](/app.js#L40-L57)).
+- by default CORs are allowed by the node server (for dev. reasons) , we suggest you disable it for production and allow only domains you trust.
+	- (i.e. edit the 'Access-Control-Allow-Origin' line [here](/app.js#L40-L57)).
 
 ## URL API
 ### Shorten A URL
