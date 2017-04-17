@@ -1,10 +1,14 @@
 # API Docs
 
-## Quick Installation
+## Installation
 - install Node.js on your system & cd to the app dir
 - `npm install`
 - `node app.js` or `nodemon app.js`
 - go to localhost:7070
+
+## Installation (Docker)
+if you want to install in a docker container just do:
+- not yet implemented but cd to root dir and do docker init or somthing i forget
 
 ## Using a Custom Domain
 - point a domain to this server and it should work as normal (depends on your setup - create and issue if you're unsure)
