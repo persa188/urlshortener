@@ -1,9 +1,14 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    display: flex;
-    height: 100vh;
-    flex-direction: column;
-    margin: 0;
+  background: rgba(0, 0, 0, .01);
+  font-family: Menlo, -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+
+input {
+  font-family: Menlo, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .container {
@@ -14,9 +19,55 @@ body {
   flex-direction: column;
 }
 
-.shortener {
+.nav {
+  background-color: #8c1aff;
+  color: #fff;
+}
+
+h4 {
+  display: inline;
+  margin: 0;
+}
+
+#shortener {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+
+#long-url {
+  width: 400px;
+  font-family: Menlo;
+  border: none;
+  margin: 0;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+
+#long-url:focus {
+  outline: none;
+}
+
+.long-url {
+  margin-right: 15px;
+  display: block;
+  background-color: #FFF;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .15);
+}
+
+.shorten-submit {
+  background-color: #8c1aff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  height: 39px;
+  padding: 0 15px;
+  font-size: 14px;
+}
+
+.shorten-submit.disabled {
+  background-color: #eee;
+  color: #999;
 }
 
 .result {

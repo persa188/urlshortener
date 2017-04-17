@@ -11,10 +11,10 @@
   <div class="container">
     <div class="header">
       <form id="shortener">
-        URL: <input id="long-url" type="text" name="long-url" required="true"
+        <div class="long-url"><input id="long-url" type="text" name="long-url" required="true"
          pattern=".+"
-         placeholder="enter url">
-        <input type="submit" value="Submit">
+         placeholder="https://example.com"></div>
+        <input class="shorten-submit disabled" type="submit" value="Shorten">
       </form>
     </div>
     <!-- fill with js -->
