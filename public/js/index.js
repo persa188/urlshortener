@@ -57,7 +57,7 @@ var view = (function(){
       view.ajax('Post', 'https://'+server+'/api/shorten/', {url: url}, true, function(err, data) {
         if (err) return console.error(err);
         else {
-          if (data.short_url) document.getElementById('result').innerHTML = `shortened url: https://${server}/u/${data.short_url.replace(/"/g,'')}`;
+          if (data.short_url) document.getElementById('result').innerHTML = `shortened url: https://${window.location.host}/u/${data.short_url.replace(/"/g,'')}`;
         }
       });
     }
@@ -72,4 +72,4 @@ var view = (function(){
 
 
   return view;
-}());
+}(window));
