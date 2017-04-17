@@ -2,9 +2,7 @@
 
 
 ## Front End
-The front-end code is now separate and hosted [here](https://url.sanic.ca) and git src [here](https://github.com/persa188/url-shortener-frontend)  
-
-the node app will still contain the public directory for now and will be removed after some more tests are done.
+The example app front-end is hosted [here](https://url.sanic.ca) and src [here](/public). If you want to host a front-end on a different server there is some front-end code [here](https://github.com/persa188/url-shortener-frontend) that points to the default example api.
 
 ## API
 The api will be hosted [here](https://api2.sanic.ca)  
