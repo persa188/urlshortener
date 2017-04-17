@@ -7,8 +7,13 @@
 - go to localhost:7070
 
 ## Using a Custom Domain
-- point a domain to this server and it should work as normal
+- point a domain to this server and it should work as normal (depends on your setup - create and issue if you're unsure)
 	- e.x. nginx redirect from port 443 -> localhost:7070 (using proxy-pass to fwd all data)
+
+## Hosting the Front-End on a Seperate Server
+- this should work normally as long as the server variable in front-end is set to the location of your server.
+	- by defauly CORs is allowed by the node server (for dev. reasons) , we suggest you disable it and allow only domains
+	  you trust (edit this block [lines](/app.js#40-57)).
 
 ## URL API
 ### Shorten A URL
