@@ -57,10 +57,17 @@ var view = (function(){
       view.ajax('Post', 'https://'+server+'/api/shorten/', {url: url}, true, function(err, data) {
         if (err) return console.error(err);
         else {
-          if (data.short_url) document.getElementById('result').innerHTML = `<p>shortened url: https://&#x1F389;&#x1F4AF;.ws/u/${data.short_url.replace(/"/g,'')}</p>`;
+          if (data.short_url) document.getElementById('result').innerHTML = `<p>shortened url: <a id="short_url" onclick="view.myselect();">https://&#x1F389;&#x1F4AF;.ws/u/${data.short_url.replace(/"/g,'')}</a></p>`;
         }
       });
     }
+  }
+
+  view.myselect = function() {
+    var link = document.getElementById('short_url');
+    var range = document.createRange();
+    range.selectNode(link);  
+    window.getSelection().addRange(range);
   }
 
   /*regex validation from
