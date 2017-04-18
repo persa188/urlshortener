@@ -63,7 +63,7 @@ h4 {
   height: 39px;
   padding: 0 15px;
   font-size: 14px;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
 .shorten-submit.disabled {
