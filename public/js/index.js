@@ -16,6 +16,7 @@ var view = (function(){
     }
   };
 
+  // generic ajax request
   view.ajax = function(method, url, body, json, callback) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -63,10 +64,11 @@ var view = (function(){
     }
   }
 
+  // select the returned shortened url
   view.myselect = function() {
     var link = document.getElementById('short_url');
     var range = document.createRange();
-    range.selectNode(link);  
+    range.selectNode(link);
     window.getSelection().addRange(range);
   }
 
