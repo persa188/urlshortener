@@ -39,8 +39,8 @@ var config = {
 // Add headers
 app.use(function (req, res, next) {
 
-    // Website you wish to allow to connect, can use wildcards and multiple sites
-    res.setHeader('Access-Control-Allow-Origin', 'https://url.sanic.ca');
+    // Website you wish to allow to connect, @TODO: edit this in a production env
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
