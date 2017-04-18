@@ -17,3 +17,4 @@ The docs are [here](/docs)
 - [ ] update this list with more tasks as they become apparent (ongoing)
 - [ ] change 🎉💯.ws to cloudlfare in order to hide origin server IP
 - [ ] make conf.js generic and configure to not overwrite local conf.js versions
+- [ ] Make this Repository Public (after removing identifying information)
