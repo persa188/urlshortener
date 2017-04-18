@@ -7,9 +7,9 @@ the api is hosted [here](https://api2.sanic.ca) and src code [here](https://gith
 
 ## Front End (this)
 
-this repo acts as the git-pages site that hosts the web interface for the url-shortener project, accessible [here](https://url.sanic.ca) 
+this repo acts as the git-pages site that hosts the web interface for the url-shortener project, accessible [here](https://url.sanic.ca)
 
 ### TODO
 - [ ] style & prettify (ongoing)
-- [ ] rewrite requests to use plan AJAX instead of Fetch API ( optional - undecided if needed )
-- [ ] update this list as needed (ongoing)
+- [ ] update this list as needed (ongoing)\
+- [x] rewrite requests to use plan AJAX instead of Fetch API ( optional - undecided if needed )
