@@ -69,6 +69,7 @@ h4 {
 .shorten-submit.disabled {
   background-color: #eee;
   color: #999;
+  cursor: default;
 }
 
 .result {
