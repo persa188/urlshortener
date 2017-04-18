@@ -3,6 +3,7 @@
 ## Installation
 - install Node.js on your system & cd to the app dir
 - `npm install`
+- fill out [conf.js](/conf.js) with your mongo credentials and URI
 - `node app.js` or `nodemon app.js`
 - go to localhost:7070
 
