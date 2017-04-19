@@ -23,6 +23,9 @@ app.use(express.static(__dirname + '/public/'));
 mongoose.connect(conf.mlab.mongouri, utils.mongo_options);
 mongoose.Promise = global.Promise;
 
+//for tests
+exports.app = app;
+
 //models
 var URL = require('./models/url');
 
