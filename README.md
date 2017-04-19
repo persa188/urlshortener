@@ -11,10 +11,12 @@ The docs are [here](/docs)
 ### TODO:
 - [x] remove /public and update code accordingly  (already done on production server)
 - [ ] automate production server updates
-- [ ] add a Dockerfile to make intializing in a docker container ezpz
-- [ ] move production server code from temporary screen to docker container
+- [x] add a Dockerfile to make intializing in a docker container ezpz
+- [x] move production server code from temporary screen to docker container
 - [x] docs
 - [ ] update this list with more tasks as they become apparent (ongoing)
 - [x] change 🎉💯.ws to cloudlfare in order to hide origin server IP
 - [ ] make conf.js generic and configure to not overwrite local conf.js versions
 - [ ] Make this Repository Public (after removing identifying information)
+- [ ] remove hardcoded 🎉💯.ws on client code and change to a window.location.href.host with checks against an alias list.
+  - document this functionality
