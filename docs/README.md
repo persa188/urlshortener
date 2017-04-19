@@ -7,9 +7,20 @@
 - `node app.js` or `nodemon app.js`
 - go to localhost:7070
 
-## Installation (Docker)
-if you want to install in a docker container just do:
-- not yet implemented but cd to root dir and do docker init or somthing i forget
+## Quick Installation (Docker)
+if you want to install in a docker container just do: (assuming you have docker setup on your system)
+- `chmod +x bootstrap.sh`
+- `./boostrap.sh`
+- go to localhost:7070
+
+## Manual Installation (Docker)
+assuming docker is installed correctly on your system do:
+- `cd path_to_app_dir`
+- `docker build -t url-shortener .`
+- `docker run -d -p <external_port>:7070 --name <your_container_name> url-shortener`
+	- where `<external port>` is the port on your machine you want to access the app at
+	- the `--name <your_container_name>` part is optional, if you exclude this docker will randomly name your container
+If you would like a sample script just look at [bootstrap.js](/bootstrap.js)
 
 ## Using a Custom Domain
 - point a domain to this server and it should work as normal (depends on your setup - create and issue if you're unsure)
