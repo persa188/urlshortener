@@ -51,7 +51,7 @@ describe('URL API Tests', () => {
       agent.post('/api/shorten/').type('json').send(vars.testurl_google)
         .end(function (err, res) {
           res.should.have.status(200);
-          // global.google_id = res.body.short_url;
+          global.google_id = res.body.short_url;
           done();
         });
     });
