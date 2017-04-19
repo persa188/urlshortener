@@ -1,4 +1,4 @@
-var view = (function(){
+var view = (function(window, alias){
   'use strict';
 
   var view = {};
@@ -58,7 +58,7 @@ var view = (function(){
       view.ajax('Post', 'https://'+server+'/api/shorten/', {url: url}, true, function(err, data) {
         if (err) return console.error(err);
         else {
-          if (data.short_url) document.getElementById('result').innerHTML = `<p>shortened url: <a id="short_url" onclick="view.myselect();">https://&#x1F389;&#x1F4AF;.ws/u/${data.short_url.replace(/"/g,'')}</a></p>`;
+          if (data.short_url) document.getElementById('result').innerHTML = `<p>shortened url: <a id="short_url" onclick="view.myselect();">https://${alias.getAlias(window.location.host)}/u/${data.short_url.replace(/"/g,'')}</a></p>`;
         }
       });
     }
@@ -81,4 +81,4 @@ var view = (function(){
 
 
   return view;
-}(window));
+}(window, alias));
