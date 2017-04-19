@@ -19,4 +19,4 @@ The docs are [here](/docs)
 - [ ] make conf.js generic and configure to not overwrite local conf.js versions
 - [ ] Make this Repository Public (after removing identifying information)
 - [ ] remove hardcoded 🎉💯.ws on client code and change to a window.location.href.host with checks against an alias list.
-  - document this functionality
+  - [ ] document this functionality
