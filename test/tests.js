@@ -48,17 +48,12 @@ describe('URL API Tests', () => {
   describe('/GET /u/:id', () => {
     /* before each test */
     before((done) => {
-      agent.post('/api/shorten/').type('json').send(vars.testurl_google)
-        .end(function (err, res) {
-          res.should.have.status(200);
-          global.google_id = res.body.short_url;
-          done();
-        });
+      done();
     });
 
-    it('should return code 200', function(done) {
+    it('should return code 302 when redirecting to google', function(done) {
       agent
-        .get('/u/'+global.google_id)
+        .get('/u/'+vars.google_id)
         .expect(302)
         .end(function(err, res){
           if(err) {

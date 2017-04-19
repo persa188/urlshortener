@@ -13,3 +13,5 @@ exports.testurl_empty = {
 exports.testurl_google = {
   "url": "https://google.ca"
 };
+
+exports.google_id = "HJ2B7JS0e";

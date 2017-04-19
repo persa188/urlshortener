@@ -71,7 +71,7 @@ app.post('/api/shorten/', function(req, res, next) {
   if (!req.body.url || !urlv.isUri(req.body.url)) res.status(400).end(stat._400);
   URL.findOne({long_url: req.body.url}, {}, function(err, doc) {
     if (err) return res.status(500).end(stat._500);
-    if (doc) res.send({"short_url": JSON.stringify(doc.short_url)});
+    if (doc) res.status(200).end(JSON.stringify({"short_url": doc.short_url}));
     else {
       //add to db and return
       var new_url = new URL ({
