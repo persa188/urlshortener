@@ -2,7 +2,7 @@ var alias = (function(){
   'use strict';
   var alias = {};
   var aliases = {
-    "xn--dk8hms": "&#x1F389;&#x1F4AF;.ws"
+    "xn--dk8hms.ws": "&#x1F389;&#x1F4AF;.ws"
   };
 
   alias.getAlias = function (host) {
