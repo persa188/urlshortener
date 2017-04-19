@@ -4,6 +4,10 @@ var alias = (function(){
   var aliases = [{
     host: "xn--dk8hms.ws",
     alias: "&#x1F389;&#x1F4AF;.ws"
+  },
+  {
+    host: "www.xn--dk8hms.ws",
+    alias: "&#x1F389;&#x1F4AF;.ws"
   }];
 
   alias.getAlias = function (host) {
