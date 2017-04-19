@@ -1,12 +1,15 @@
 # urlshortner [![Build Status](https://travis-ci.com/persa188/urlshortener.svg?token=ioxJqCa1fJPNAPQhWhxn&branch=master)](https://travis-ci.com/persa188/urlshortener)
 
-
-## Front End
-The example app front-end is hosted [here](https://url.sanic.ca) and src [here](/public). If you want to host a front-end on a different server there is some front-end code [here](https://github.com/persa188/url-shortener-frontend) that points to the default example api.
-
 ## API
 The api will be hosted [here](https://api2.sanic.ca)  
 The docs are [here](/docs)
+
+## Tech Stack / Requirements
+- MongoDB instance (if you don't have one check out mlab's free 500mb sandbox instances)
+- Node.js && Express
+
+## Front End
+The example app front-end is hosted [here](https://url.sanic.ca) and src [here](/public). If you want to host a front-end on a different server there is some front-end code [here](https://github.com/persa188/url-shortener-frontend) that points to the default example api.
 
 ### TODO:
 - [x] remove /public and update code accordingly  (already done on production server)
