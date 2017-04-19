@@ -68,6 +68,7 @@ app.post('/api/shorten/', function(req, res, next) {
   //set header
   res.setHeader('Content-Type', 'application/json');
   //check if long_url exists
+  sanitizer.sanitize(req.body.url);
   if (!req.body.url || !urlv.isUri(req.body.url)) res.status(400).end(stat._400);
   URL.findOne({long_url: req.body.url}, {}, function(err, doc) {
     if (err) return res.status(500).end(stat._500);
@@ -92,6 +93,9 @@ app.use(function (req, res, next){
 });
 
 app.get('/u/:id', function(req, res, next) {
+  sanitizer.sanitize(req.params.id);
+  if(!req.params.id) return res.status(400).end(stat._400);
+
   URL.findOne({short_url: req.params.id}, {}, function (err, doc) {
     if (err) return res.status(500).end(stat._500);
     if (!doc) return res.status(404).end(stat._404);

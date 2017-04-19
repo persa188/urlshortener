@@ -53,15 +53,28 @@ describe('URL API Tests', () => {
 
     it('should return code 302 when redirecting to google', function(done) {
       agent
-        .get('/u/'+vars.google_id)
-        .expect(302)
-        .end(function(err, res){
+        .get('/u/'+vars.google_id) //the id is a value I took from our db
+        .expect(302)              //using the before tag was buggy and test stubs
+        .end(function(err, res){   //are better anyways
           if(err) {
             done(err);
           } else {
             done();
           }
         });
-    });
+    }); //end it
+
+    it('should return code 404 when redirecting to unkown short url', function(done) {
+      agent
+        .get('/u/'+vars.random_id) //the id is a value I took from our db
+        .expect(404)              //using the before tag was buggy and test stubs
+        .end(function(err, res){   //are better anyways
+          if(err) {
+            done(err);
+          } else {
+            done();
+          }
+        });
+    }); //end it
   });
 });

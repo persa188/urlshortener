@@ -15,3 +15,5 @@ exports.testurl_google = {
 };
 
 exports.google_id = "HJ2B7JS0e";
+
+exports.random_id = "0"; //this is an impossible id so it works
