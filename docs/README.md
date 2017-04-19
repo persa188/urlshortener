@@ -1,9 +1,11 @@
 # API Docs
 
+## Pre-Install (databse setup)
+- fill out [conf.js](/conf.js) with your mongo credentials and URI, we recommend [mlab](https://mlab.com) if you don't have your own mongodb instance, since its quick & easy & they offer 500mb free storage. (just register and setup an aws instance).
+
 ## Installation
 - install Node.js on your system & cd to the app dir
 - `npm install`
-- fill out [conf.js](/conf.js) with your mongo credentials and URI
 - `node app.js` or `nodemon app.js`
 - go to localhost:7070
 
