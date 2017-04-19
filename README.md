@@ -5,7 +5,7 @@ The api will be hosted [here](https://api2.sanic.ca)
 The docs are [here](/docs)
 
 ## Tech Stack / Requirements
-- MongoDB instance (if you don't have one check out mlab's free 500mb sandbox instances)
+- MongoDB instance (if you don't have one check out [mlab's](https://mlab.com) free 500mb sandbox instances)
 - Node.js && Express
 
 ## Front End
