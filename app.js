@@ -28,7 +28,8 @@ mongoose.Promise = global.Promise;
 exports.app = app;
 
 //models
-var URL = require('./models/url');
+var URL = require('./models/url').url;
+var URLCustom = require('./models/url').url_custom;
 
 //https setup
 var https = require("https");
@@ -65,6 +66,7 @@ app.get('/', function(req, res, next) {
 });
 
 app.post('/api/shorten/', function(req, res, next) {
+  console.log("body:", req.body.url, req.body.short_url);
   //set header
   res.setHeader('Content-Type', 'application/json');
   //check if long_url exists
@@ -78,8 +80,35 @@ app.post('/api/shorten/', function(req, res, next) {
       var new_url = new URL ({
         long_url: req.body.url
       });
+      console.log("new_url", new_url);
       new_url.save(function (err, docs) {
         if (err) res.status(500).end(stat._500);
+        return res.send({"short_url": JSON.stringify(docs.short_url)});
+      });
+    }
+  });
+});
+
+// custom shortURL endpoint
+app.post('/api/shorten/custom', function(req, res, next) {
+  console.log("body:", req.body.long_url, req.body.short_url);
+  //set header
+  res.setHeader('Content-Type', 'application/json');
+  //check if long_url exists
+  if (!req.body.long_url || !urlv.isUri(req.body.long_url)) res.status(400).end(stat._400);
+  URLCustom.findOne({short_url: req.body.short_url}, {}, function(err, doc) {
+    if (err) return res.status(500).end(stat._500);
+    if (doc) res.status(200).end(JSON.stringify({"short_url": doc.short_url}));
+    else {
+      //add to db and return
+      var new_url = new URLCustom ({
+        short_url: req.body.short_url,
+        long_url: req.body.long_url
+      });
+      console.log("new_url", new_url);
+      new_url.save(function (err, docs) {
+        if (err) res.status(500).end(stat._500);
+        console.log("docsss",docs);
         return res.send({"short_url": JSON.stringify(docs.short_url)});
       });
     }
@@ -95,15 +124,28 @@ app.use(function (req, res, next){
 app.get('/u/:id', function(req, res, next) {
   sanitizer.sanitize(req.params.id);
   if(!req.params.id) return res.status(400).end(stat._400);
-
-  URL.findOne({short_url: req.params.id}, {}, function (err, doc) {
+  URLCustom.findOne({short_url: req.params.id}, {}, function (err, doc) {
     if (err) return res.status(500).end(stat._500);
-    if (!doc) return res.status(404).end(stat._404);
-    //redirect
-    res.writeHead(302, {
-      'Location': doc.long_url
-    });
-    res.end();
+
+    if (!doc) {
+      URL.findOne({short_url: req.params.id}, {}, function (err, doc) {
+        if (err) return res.status(500).end(stat._500);
+        if (!doc) return res.status(404).end(stat._404);
+        //redirect
+        res.writeHead(302, {
+          'Location': doc.long_url
+        });
+        res.end();
+      });
+    } else {
+      //redirect
+      res.writeHead(302, {
+        'Location': doc.long_url
+      });
+
+      res.end();
+
+    }
   });
 });
 

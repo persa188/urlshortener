@@ -3,6 +3,7 @@ var view = (function(window, alias){
 
   var view = {};
   var server = 'api2.sanic.ca';
+  var server = 'localhost:7070';
 
   var urlInput = document.getElementById('long-url');
 
@@ -43,6 +44,7 @@ var view = (function(window, alias){
   document.getElementById('shortener').onsubmit = function(e) {
     e.preventDefault();
     var url = document.getElementById('long-url').value;
+    var custom = document.getElementById('custom-url').value;
     //auto-add http prefix
     if (!/^(f|ht)tps?:\/\//i.test(url)) {
       url = 'http://' + url;
@@ -55,12 +57,23 @@ var view = (function(window, alias){
     {
       document.getElementById('result').innerHTML = 'invalid url format, url must end with . followed by a top level domain (e.g. sanic.ca, google.com, wikipedia.org, https://github.com)';
     } else {
-      view.ajax('Post', 'https://'+server+'/api/shorten/', {url: url}, true, function(err, data) {
-        if (err) return console.error(err);
-        else {
-          if (data.short_url) document.getElementById('result').innerHTML = `<p>shortened url: <a id="short_url" onclick="view.myselect();">https://${alias.getAlias(window.location.host)}/u/${data.short_url.replace(/"/g,'')}</a></p>`;
-        }
-      });
+      if (custom) {
+        console.log(url, custom);
+        view.ajax('Post', 'https://'+server+'/api/shorten/custom/', {long_url: url, short_url: custom}, true, function(err, data) {
+          if (err) return console.error("Err: ", err);
+          else {
+            console.log(data);
+            if (data.short_url) document.getElementById('result').innerHTML = `<p>shortened url: <a id="short_url" onclick="view.myselect();">https://${alias.getAlias(window.location.host)}/u/${data.short_url.replace(/"/g,'')}</a></p>`;
+          }
+        });
+      } else {
+        view.ajax('Post', 'https://'+server+'/api/shorten/', {url: url}, true, function(err, data) {
+          if (err) return console.error(err);
+          else {
+            if (data.short_url) document.getElementById('result').innerHTML = `<p>shortened url: <a id="short_url" onclick="view.myselect();">https://${alias.getAlias(window.location.host)}/u/${data.short_url.replace(/"/g,'')}</a></p>`;
+          }
+        });
+      }
     }
   }
 
