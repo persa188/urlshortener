@@ -20,7 +20,8 @@ The example app front-end is hosted [here](https://url.sanic.ca) and src [here](
 - [x] docs
 - [ ] update this list with more tasks as they become apparent (ongoing)
 - [x] change 🎉💯.ws to cloudlfare in order to hide origin server IP
-- [ ] make conf.js generic and configure to not overwrite local conf.js versions
+- [x] make conf.js generic and configure to not overwrite local conf.js versions
+  - [ ] still need to configure not to overwrite local conf.js versions, perhaps switch to env vars instead of conf.js
 - [ ] Make this Repository Public (after removing identifying information)
 - [x] remove hardcoded 🎉💯.ws on client code and change to a window.location.href.host with checks against an alias list.
   - [ ] document this functionality
