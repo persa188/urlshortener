@@ -1,4 +1,5 @@
-# urlshortner [![Build Status](https://travis-ci.com/persa188/urlshortener.svg?token=ioxJqCa1fJPNAPQhWhxn&branch=master)](https://travis-ci.com/persa188/urlshortener)
+# urlshortner [![Build Status](https://travis-ci.com/persa188/urlshortener.svg?token=ioxJqCa1fJPNAPQhWhxn&branch=master)](https://travis-ci.com/persa188/urlshortener) [![Known Vulnerabilities](https://snyk.io/test/github/snyk/goof/badge.svg)](https://snyk.io/test/github/persa188/urlshortener/)
+
 
 ## API
 The api will be hosted [here](https://api2.sanic.ca)  
