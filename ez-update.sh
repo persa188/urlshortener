@@ -1,3 +1,4 @@
 docker stop url-shortener
 docker rm url-shortener
-./boostrap.sh
+chmod +x ./bootstrap.sh
+./bootstrap.sh
