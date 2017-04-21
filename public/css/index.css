@@ -35,7 +35,16 @@ h4 {
   align-items: center;
 }
 
-#long-url {
+.long-url,
+.custom-url {
+  margin-right: 15px;
+  display: block;
+  background-color: #FFF;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .15);
+}
+
+#long-url,
+#custom-url {
   width: 400px;
   font-family: Menlo;
   border: none;
@@ -44,15 +53,13 @@ h4 {
   font-size: 16px;
 }
 
-#long-url:focus {
-  outline: none;
+#custom-url {
+  width: 200px;
 }
 
-.long-url {
-  margin-right: 15px;
-  display: block;
-  background-color: #FFF;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, .15);
+#long-url:focus,
+#custom-url:focus {
+  outline: none;
 }
 
 .shorten-submit {
