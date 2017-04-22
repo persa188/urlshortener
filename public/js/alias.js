@@ -1,3 +1,7 @@
+/**
+* this class basically adds emoji url support, add the punycode or url-encoded domain value as the host and the emoji value as the alias
+* so the returned result will be the emoji url value instead of the punycode/url-encoded URI
+*/
 var alias = (function(){
   'use strict';
   var alias = {};
