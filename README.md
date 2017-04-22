@@ -14,16 +14,23 @@ The docs are [here](/docs)
 The example app front-end is hosted [here](https://url.sanic.ca) and src [here](/public). If you want to host a front-end on a different server there is some front-end code [here](https://github.com/persa188/url-shortener-frontend) that points to the default example api.
 
 ### TODO:
-- [ ] clean up this list (@BrandonMowat)
+<!--
+- [x] clean up this list (@BrandonMowat)
 - [x] remove /public and update code accordingly  (already done on production server)
+-->
 - [ ] automate production server updates
+<!--
 - [x] add a Dockerfile to make intializing in a docker container ezpz
 - [x] move production server code from temporary screen to docker container
 - [x] docs
+-->
 - [ ] update this list with more tasks as they become apparent (ongoing)
+<!--
 - [x] change 🎉💯.ws to cloudlfare in order to hide origin server IP
 - [x] make conf.js generic and configure to not overwrite local conf.js versions
   - [x] still need to configure not to overwrite local conf.js versions, perhaps switch to env vars instead of conf.js
-- [ ] Make this Repository Public (after removing identifying information)
+- [x] Make this Repository Public (after removing identifying information)
+-->
 - [x] remove hardcoded 🎉💯.ws on client code and change to a window.location.href.host with checks against an alias list.
   - [ ] document this functionality
+- [ ] complete the front-end todo [here](/public)
