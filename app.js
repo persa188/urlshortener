@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({limit: "50mb"}));
 
 //static
-app.use(express.static(__dirname + "/public/"));
+app.use(express.static(path.resolve("./public/")));
 
 //db conf
 mongoose.connect(conf.mlab.mongouri, utils.mongo_options);
