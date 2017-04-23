@@ -1,5 +1,6 @@
 # base image
 FROM node
+MAINTAINER Daniel
 
 # create the application directory
 RUN mkdir -p /home/nodejs/app
