@@ -29,7 +29,6 @@ var view = (function(window, alias){
           } else {
             return callback(this.responseText, null);
           }
-          break;
       }
     };
     xhr.open(method, url);
