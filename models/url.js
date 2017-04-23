@@ -31,6 +31,8 @@ url_schema.pre('save', true, function(next, done) {
   // calling next kicks off the next middleware in parallel
   var self = this;
   self.constructor.find({}, {}, function(err, doc) {
+    if (err) console.log(err);
+
     var rand = shortid.generate();
     if (doc) {
       var ids = doc.map (function (x) {
@@ -50,6 +52,7 @@ url_schema_custom.pre('save', true, function(next, done) {
   // calling next kicks off the next middleware in parallel
   var self = this;
   self.constructor.find({}, {}, function(err, doc) {
+    if (err) console.log(err);
     console.log(this, self);
     done();
   });
