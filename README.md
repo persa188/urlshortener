@@ -36,3 +36,4 @@ The example app front-end is hosted [here](https://url.sanic.ca) and src [here](
 - [x] remove hardcoded 🎉💯.ws on client code and change to a window.location.href.host with checks against an alias list.
   - [ ] document this functionality
 - [ ] complete the front-end todo [here](/public)
+- [ ] code cleanup
