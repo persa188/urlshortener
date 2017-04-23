@@ -21,6 +21,7 @@ exports.statcodes = {
     _401: JSON.stringify({response:"unauthorized"}),
     _404: JSON.stringify({response: "not found"}),
     _409: JSON.stringify({response:"new user not created"}),
+    _477: JSON.stringify({response: "requested custom url already taken"}),
     _500: JSON.stringify({response:"server error"})
 };
 

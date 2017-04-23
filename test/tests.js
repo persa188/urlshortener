@@ -1,4 +1,4 @@
-var url = require('../models/url'),
+var url = require('../models/URL'),
   vars = require("./testvars.js"),
   chai = require('chai'),
   chaiHttp = require('chai-http'),
@@ -18,7 +18,7 @@ describe('URL API Tests', () => {
       });
 
       it('adding a properly formatted url should work', (done) => {
-        agent.post('/api/shorten/').type('json').send(vars.testurl1)
+        agent.post('/api/shorten/').type('json').send(vars.testURL1)
           .end(function (err, res) {
             res.should.have.status(200);
             done();
@@ -26,7 +26,7 @@ describe('URL API Tests', () => {
       });
 
       it('adding an empty url should return bad request', (done) => {
-        agent.post('/api/shorten/').type('json').send(vars.testurl_empty)
+        agent.post('/api/shorten/').type('json').send(vars.testURLEmpty)
           .end(function (err, res) {
             res.should.have.status(400);
             done();
@@ -34,7 +34,7 @@ describe('URL API Tests', () => {
       });
 
       it('adding a url without http:// should return bad request', (done) => {
-        agent.post('/api/shorten/').type('json').send(vars.testurl_bad_formatting)
+        agent.post('/api/shorten/').type('json').send(vars.testURLBadFormatting)
           .end(function (err, res) {
             res.should.have.status(400);
             done();
@@ -54,7 +54,7 @@ describe('URL API Tests', () => {
     //this test will fail on your own db, you must update the teststub value vars.google_id for it to work!
     it('should return code 302 when redirecting to google', function(done) {
       agent
-        .get('/u/'+vars.google_id) //the id is a value I took from our db
+        .get('/u/'+vars.googleID) //the id is a value I took from our db
         .expect(302)              //using the before tag was buggy and test stubs
         .end(function(err, res){   //are better anyways
           if(err) {
@@ -67,7 +67,7 @@ describe('URL API Tests', () => {
 
     it('should return code 404 when redirecting to unkown short url', function(done) {
       agent
-        .get('/u/'+vars.random_id) //the id is a value I took from our db
+        .get('/u/'+vars.randomID) //the id is a value I took from our db
         .expect(404)              //using the before tag was buggy and test stubs
         .end(function(err, res){   //are better anyways
           if(err) {

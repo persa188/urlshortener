@@ -1,24 +1,24 @@
-var crypto = require('crypto'),
-  path = require('path'),
-  express = require('express'),
+var crypto = require("crypto"),
+  path = require("path"),
+  express = require("express"),
   app = express(),
-  sanitizer = require('sanitizer'),
-  validator = require('express-validator'),
-  bodyParser = require('body-parser'),
-  mongoose = require('mongoose'),
-  conf = require('./conf'),
-  utils = require('./utils/utils.js'),
+  sanitizer = require("sanitizer"),
+  validator = require("express-validator"),
+  bodyParser = require("body-parser"),
+  mongoose = require("mongoose"),
+  conf = require("./conf"),
+  utils = require("./utils/utils.js"),
   randomstring = require("randomstring"),
   stat = utils.statcodes,
-  urlv = require('valid-url');
+  urlv = require("valid-url");
 
 //body parser stuff
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.json({limit: "50mb"}));
 
 //static
-app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + "/public/"));
 
 //db conf
 mongoose.connect(conf.mlab.mongouri, utils.mongo_options);
@@ -28,14 +28,14 @@ mongoose.Promise = global.Promise;
 exports.app = app;
 
 //models
-var URL = require('./models/url').url;
-var URLCustom = require('./models/url').url_custom;
+var URL = require("./models/URL").url;
+var URLCustom = require("./models/customURL").customURL;
 
 //https setup
 var https = require("https");
-var fs = require('fs');
-var privateKey = fs.readFileSync( 'certs/server.key' );
-var certificate = fs.readFileSync( 'certs/server.crt' );
+var fs = require("fs");
+var privateKey = fs.readFileSync( "certs/server.key" );
+var certificate = fs.readFileSync( "certs/server.crt" );
 var config = {
         key: privateKey,
         cert: certificate
@@ -45,33 +45,33 @@ var config = {
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect, @TODO: edit this in a production env
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader("Access-Control-Allow-Origin", "*");
 
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
 
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type");
 
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', false);
+    res.setHeader("Access-Control-Allow-Credentials", false);
 
     // Pass to next layer of middleware
     next();
 });
 
-app.get('/', function(req, res, next) {
-  res.sendFile('/public/index.html');
+app.get("/", function(req, res, next) {
+  res.sendFile("/public/index.html");
 });
 
-app.post('/api/shorten/', function(req, res, next) {
-  console.log("body:", req.body.url, req.body.short_url);
+app.post("/api/shorten/", function(req, res, next) {
   //set header
-  res.setHeader('Content-Type', 'application/json');
+  res.setHeader("Content-Type", "application/json");
   //check if long_url exists
   sanitizer.sanitize(req.body.url);
   if (!req.body.url || !urlv.isUri(req.body.url)) res.status(400).end(stat._400);
+
   URL.findOne({long_url: req.body.url}, {}, function(err, doc) {
     if (err) return res.status(500).end(stat._500);
     if (doc) res.status(200).end(JSON.stringify({"short_url": doc.short_url}));
@@ -90,25 +90,29 @@ app.post('/api/shorten/', function(req, res, next) {
 });
 
 // custom shortURL endpoint
-app.post('/api/shorten/custom', function(req, res, next) {
-  console.log("body:", req.body.long_url, req.body.short_url);
+app.post("/api/shorten/custom", function(req, res, next) {
   //set header
-  res.setHeader('Content-Type', 'application/json');
-  //check if long_url exists
-  if (!req.body.long_url || !urlv.isUri(req.body.long_url)) res.status(400).end(stat._400);
-  URLCustom.findOne({short_url: req.body.short_url}, {}, function(err, doc) {
+  res.setHeader("Content-Type", "application/json");
+  //check if long_url exists & sanitize
+  req.body.url = sanitizer.sanitize(req.body.url);
+  req.body.custom_url = sanitizer.sanitize(req.body.custom_url);
+  if (!req.body.url || !urlv.isUri(req.body.url)
+      || !req.body.custom_url) res.status(400).end(stat._400);
+
+  URLCustom.findOne({short_url: req.body.custom_url}, {}, function(err, doc) {
     if (err) return res.status(500).end(stat._500);
-    if (doc) res.status(200).end(JSON.stringify({"short_url": doc.short_url}));
+    console.log(stat._304);
+    if (doc) return res.status(477).end(stat._477);
     else {
       //add to db and return
       var new_url = new URLCustom ({
-        short_url: req.body.short_url,
-        long_url: req.body.long_url
+        short_url: req.body.custom_url,
+        long_url: req.body.url
       });
-      console.log("new_url", new_url);
+      //save
       new_url.save(function (err, docs) {
         if (err) res.status(500).end(stat._500);
-        console.log("docsss",docs);
+        console.log("/shorten/custom docs",docs);
         return res.send({"short_url": JSON.stringify(docs.short_url)});
       });
     }
@@ -121,7 +125,7 @@ app.use(function (req, res, next){
     return next();
 });
 
-app.get('/u/:id', function(req, res, next) {
+app.get("/u/:id", function(req, res, next) {
   sanitizer.sanitize(req.params.id);
   if(!req.params.id) return res.status(400).end(stat._400);
   URLCustom.findOne({short_url: req.params.id}, {}, function (err, doc) {
@@ -133,14 +137,14 @@ app.get('/u/:id', function(req, res, next) {
         if (!doc) return res.status(404).end(stat._404);
         //redirect
         res.writeHead(302, {
-          'Location': doc.long_url
+          "Location": doc.long_url
         });
         res.end();
       });
     } else {
       //redirect
       res.writeHead(302, {
-        'Location': doc.long_url
+        "Location": doc.long_url
       });
 
       res.end();
@@ -151,5 +155,5 @@ app.get('/u/:id', function(req, res, next) {
 
 //https server
 https.createServer(config, app).listen(7070, function () {
-    console.log('HTTPS on port 7070');
+    console.log("HTTPS on port 7070");
 });

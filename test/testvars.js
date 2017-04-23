@@ -1,19 +1,19 @@
-exports.testurl1 = {
+exports.testURL1 = {
   "url": "http://test.com"
 };
 
-exports.testurl_bad_formatting = {
+exports.testuURLBadFormatting = {
   "url": "test.com"
 };
 
-exports.testurl_empty = {
+exports.testURLEmpty = {
   "url": ""
 };
 
-exports.testurl_google = {
+exports.testURLGoogle = {
   "url": "https://google.ca"
 };
 
-exports.google_id = "HJ2B7JS0e";
+exports.googleID = "HJ2B7JS0e";
 
-exports.random_id = "0"; //this is an impossible id so it works
+exports.randomID = "0"; //this is an impossible id so it works
