@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f6d9a442f1bf46d8b09555088395c1e0)](https://www.codacy.com/app/persa188/urlshortener?utm_source=github.com&utm_medium=referral&utm_content=persa188/urlshortener&utm_campaign=badger)
 # urlshortener [![Build Status](https://travis-ci.com/persa188/urlshortener.svg?token=ioxJqCa1fJPNAPQhWhxn&branch=master)](https://travis-ci.com/persa188/urlshortener) [![Known Vulnerabilities](https://snyk.io/test/github/persa188/urlshortener/badge.svg)](https://snyk.io/test/github/persa188/urlshortener) [![GitHub version](https://badge.fury.io/gh/persa188%2Furlshortener.svg)](https://badge.fury.io/gh/persa188%2Furlshortener)
 
 A simple url shortener app made with nodejs & MongoDB. This app is still in its early stages of development so please use at your own risk 😜. Feel free to open an issue/pull request if you have any questions or contributions.
