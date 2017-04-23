@@ -76,10 +76,9 @@ var view = (function(window, alias, consts){
       var requestPath = custom ? "https://"+server+"/api/shorten/custom":
         "https://"+server+"/api/shorten";
       // make the request
-      console.log(url, custom);
       view.ajax("Post", requestPath ,
         {url: url, custom_url: custom}, true, function(err, data) {
-          console.log(err);
+        //handle err, else set result
         if (err) result.innerHTML = JSON.parse(err.responseText).response;
         else {
           if (data.short_url) result.innerHTML = `<p>shortened url: <a id="short_url"
