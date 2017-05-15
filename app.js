@@ -91,6 +91,7 @@ app.post("/api/shorten/", function(req, res, next) {
 
 // custom shortURL endpoint
 app.post("/api/shorten/custom", function(req, res, next) {
+  console.log(req.body.custom_url, "hi");
   //set header
   res.setHeader("Content-Type", "application/json");
   //check if long_url exists & sanitize
@@ -99,6 +100,7 @@ app.post("/api/shorten/custom", function(req, res, next) {
   if (!req.body.url || !urlv.isUri(req.body.url)
       || !req.body.custom_url) return res.status(400).end(stat._400);
 
+  console.log(req.body.custom_url, "hi2");
   URLCustom.findOne({short_url: req.body.custom_url}, {}, function(err, doc) {
     if (err) return res.status(500).end(stat._500);
     console.log(stat._304);
@@ -111,6 +113,7 @@ app.post("/api/shorten/custom", function(req, res, next) {
       });
       //save
       new_url.save(function (err, docs) {
+        console.log(err, docs, "ed");
         if (err) return res.status(500).end(stat._500);
         console.log("/shorten/custom docs",docs);
         return res.send({"short_url": JSON.stringify(docs.short_url)});

@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 // create a schema
 var urlSchemaCustom = new Schema({
   short_url: { type: String, required: true, unique: true },
-  long_url: { type: String, required: true, unique: true }
+  long_url: { type: String, required: true}
 },
 {
   timestamps: {

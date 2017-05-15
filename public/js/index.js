@@ -3,7 +3,7 @@ var view = (function(window, alias, consts){
 
   var view = {};
   var server = "api2.sanic.ca";
-//   var server = "localhost:7070";
+  // var server = "localhost:7070";
 
   var urlInput = document.getElementById("long-url");
 
