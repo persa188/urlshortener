@@ -83,7 +83,7 @@ var view = (function(window, alias, consts){
         else {
           if (data.short_url) result.innerHTML = `<p>shortened url: <a id="short_url"
             onclick="view.myselect();
-            ">https://${alias.getAlias(window.location.host)}/u/${data.short_url.replace(/"/g,"")}</a></p>`;
+            ">https://${alias.getAlias(window.location.host)}/${data.short_url.replace(/"/g,"")}</a></p>`;
         }
       });
     }

@@ -74,7 +74,7 @@ app.post("/api/shorten/", function(req, res, next) {
 
   URL.findOne({long_url: req.body.url}, {}, function(err, doc) {
     if (err) return res.status(500).end(stat._500);
-    if (doc) res.status(200).end(JSON.stringify({"short_url": doc.short_url}));
+    if (doc) return res.status(200).end(JSON.stringify({"short_url": doc.short_url}));
     else {
       //add to db and return
       var new_url = new URL ({
@@ -82,7 +82,7 @@ app.post("/api/shorten/", function(req, res, next) {
       });
       console.log("new_url", new_url);
       new_url.save(function (err, docs) {
-        if (err) res.status(500).end(stat._500);
+        if (err) return res.status(500).end(stat._500);
         return res.send({"short_url": JSON.stringify(docs.short_url)});
       });
     }
@@ -97,7 +97,7 @@ app.post("/api/shorten/custom", function(req, res, next) {
   req.body.url = sanitizer.sanitize(req.body.url);
   req.body.custom_url = sanitizer.sanitize(req.body.custom_url);
   if (!req.body.url || !urlv.isUri(req.body.url)
-      || !req.body.custom_url) res.status(400).end(stat._400);
+      || !req.body.custom_url) return res.status(400).end(stat._400);
 
   URLCustom.findOne({short_url: req.body.custom_url}, {}, function(err, doc) {
     if (err) return res.status(500).end(stat._500);
@@ -111,7 +111,7 @@ app.post("/api/shorten/custom", function(req, res, next) {
       });
       //save
       new_url.save(function (err, docs) {
-        if (err) res.status(500).end(stat._500);
+        if (err) return res.status(500).end(stat._500);
         console.log("/shorten/custom docs",docs);
         return res.send({"short_url": JSON.stringify(docs.short_url)});
       });
@@ -125,7 +125,7 @@ app.use(function (req, res, next){
     return next();
 });
 
-app.get("/u/:id", function(req, res, next) {
+app.get("/:id", function(req, res, next) {
   sanitizer.sanitize(req.params.id);
   if(!req.params.id) return res.status(400).end(stat._400);
   URLCustom.findOne({short_url: req.params.id}, {}, function (err, doc) {
