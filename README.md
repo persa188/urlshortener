@@ -5,7 +5,7 @@
 A simple url shortener app made with nodejs & MongoDB. This app is still in its early stages of development so please use at your own risk 😜. Feel free to open an issue/pull request if you have any questions or contributions.
 
 ## API
-The demo will be hosted [here](https://api2.sanic.ca)  
+The demo will be hosted [here](https://tyni.me)  
 The docs are [here](/docs)
 
 ## Tech Stack / Requirements
